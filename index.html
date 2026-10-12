@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JAI — From a written brief to a part you can make</title>
+<meta name="description" content="JAI turns a written part brief into editable CAD and checks it against real manufacturing rules, so small hardware teams get a part they can send to a machine shop.">
+<style>
+  :root{
+    --ink:#171717; --paper:#F8F8F8; --mid:#6E6E6E; --soft:#9A9A9A;
+    --rule:#E2E2DE; --accent:#4F46E5;
+    --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  a{color:var(--accent)}
+
+  header{background:var(--ink);color:#fff;padding:0;overflow:hidden;position:relative}
+  header .wrap{padding-top:84px;padding-bottom:84px;position:relative;z-index:2}
+  .blob{position:absolute;right:-8%;top:-30%;width:min(560px,70vw);height:auto;
+        opacity:.95;z-index:1;pointer-events:none}
+  h1{font-size:clamp(54px,11vw,104px);font-weight:200;letter-spacing:-.02em;
+     margin:0;line-height:1}
+  .bar{width:116px;height:3px;background:var(--accent);margin:18px 0 22px}
+  .tag{font-size:clamp(18px,3.4vw,25px);font-weight:300;margin:0;max-width:19em}
+  .who{margin-top:44px;font-size:15px}
+  .who strong{font-weight:600}
+  .who span{color:#B4B4B0;display:block;font-size:13.5px;margin-top:3px}
+
+  section{padding:54px 0;border-bottom:1px solid var(--rule)}
+  h2{font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+     color:var(--accent);font-weight:600;margin:0 0 18px}
+  p{margin:0 0 16px;font-size:17px}
+  p.lead{font-size:21px;font-weight:300;line-height:1.5}
+
+  .stats{display:flex;flex-wrap:wrap;gap:40px;margin:30px 0 4px}
+  .stat b{display:block;font-size:40px;font-weight:200;line-height:1.05}
+  .stat span{font-size:13px;color:var(--mid);display:block;margin-top:6px;max-width:15em}
+  .stat.accent b{color:var(--accent)}
+
+  ul{margin:0;padding:0;list-style:none}
+  ul li{position:relative;padding-left:20px;margin-bottom:9px;font-size:16px}
+  ul li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;
+                border-radius:50%;background:var(--accent)}
+
+  footer{padding:40px 0 64px;font-size:14px;color:var(--mid)}
+  footer a{margin-right:18px;display:inline-block}
+  .note{font-size:12.5px;color:var(--soft);margin-top:22px;line-height:1.5}
+
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#121212;--ink:#ECECEC;--mid:#A2A2A2;--rule:#2C2C2C;--soft:#7E7E7E}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img class="blob" src="liquid.png" alt="">
+  <div class="wrap">
+    <h1>JAI</h1>
+    <div class="bar"></div>
+    <p class="tag">From a written brief to a part you can make.</p>
+    <p class="who">
+      <strong>Sanjay Giridharan</strong>
+      <span>Founder &middot; Arizona State University</span>
+    </p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>The problem</h2>
+    <p class="lead">An engineer already knows what the part has to do. That decision
+      takes hours. Turning it into geometry a machine shop will accept takes days.</p>
+    <p>Small hardware teams lose those days over and over, on brackets, housings,
+      fixtures and mounts. That work is not engineering judgment. It is translation,
+      and nobody gets funded for it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What JAI does</h2>
+    <p>JAI turns a written part brief into an editable CAD program, runs it in a
+      geometry engine, and builds a real solid. That solid then passes a
+      production-readiness gate:</p>
+    <ul>
+      <li>The geometry is valid and forms exactly one closed solid</li>
+      <li>Walls are thick enough for the chosen process</li>
+      <li>Inside corners fit a real cutter</li>
+      <li>The mesh is watertight</li>
+      <li>The exported STEP file reopens as the same part</li>
+    </ul>
+    <p style="margin-top:18px">When a check fails, the failure goes back in and JAI
+      repairs the program. The engineer receives the part, the program that built it,
+      and the report that cleared it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Where it stands</h2>
+    <div class="stats">
+      <div class="stat accent"><b>40 / 40</b><span>production-readiness checks passed,
+        across five parts</span></div>
+      <div class="stat"><b>73 / 80</b><span>valid solids on BenchCAD prompts, against
+        44 for a stock model four times the size</span></div>
+      <div class="stat"><b>52,180</b><span>training examples, every one executed and
+        checked</span></div>
+    </div>
+    <p style="margin-top:26px">JAI has already designed hardware that is built and in
+      the published record: a microplastics separation filter, the SwiftFin robotic
+      tuna, an amphibious ornithopter, an ocean crawler, and a seal-whisker flow
+      sensor published in <em>Bioinspiration &amp; Biomimetics</em>.</p>
+    <p class="note">The 40 of 40 figure describes the five parts in the current
+      evidence set, and covers geometry and process rules rather than whether a part
+      matches its brief. The 73 of 80 figure is a saved internal comparison measuring
+      geometric validity. JAI has no paying customers yet.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="https://sanjay-giridharan-portfolio.netlify.app/">Portfolio</a>
+    <a href="https://www.researchgate.net/profile/Sanjay-Giridharan">ResearchGate</a>
+    <a href="https://doi.org/10.1088/1748-3190/ae9a20">Seal-whisker paper</a>
+    <p class="note">JAI &middot; Arizona State University &middot; Venture Devils</p>
+  </div>
+</footer>
+
+</body>
+</html>
